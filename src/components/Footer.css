@@ -1,0 +1,86 @@
+.footer {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: "Josefin Sans", sans-serif;
+  }
+  
+  .footer h2 {
+    color: #ff4d4f;
+    font-size: 24px; /* Kích thước chữ phần tiêu đề */
+  }
+  
+  .footer a {
+    color: #000000;
+    font-size: 17px; /* Kích thước chữ trong danh sách mục */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer a:hover {
+    color: #ff4d4f;
+    text-decoration: none;
+  }
+  
+  .footer p {
+    margin-top: 1rem;
+    color: #000000;
+  }
+
+  .introduce{
+    font-size: 15px;
+  }
+  
+  .lienhe{
+    padding-right: 7rem;
+  }
+
+  .codeby{
+    padding-top: 3rem;
+  }
+  
+.social-icon {
+    width: 60px; /* Kích thước container (hình tròn) */
+    height: 60px;
+    font-size: 35px; /* Kích thước icon */
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Tạo hình tròn */
+    background-color: #f5f5f5; /* Màu nền (nếu cần) */
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    color: #ff4d4f; /* Màu khi hover */
+    transform: scale(1.1); /* Phóng to khi hover */
+  }
+  
+  
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  
