@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faShoppingCart, faTimes, faUser, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
@@ -89,10 +90,10 @@ const Navbar = () => {
 
       <div className="navbar-center">
         <ul className="navbar-links">
-          <li><a href="#home">Trang Chủ</a></li>
-          <li><a href="#menu">Thực Đơn</a></li>
-          <li><a href="#news">Tin Tức</a></li>
-          <li><a href="#address">Địa Chỉ</a></li>
+          <li><a href="/home">Trang Chủ</a></li>
+          <li><a href="/menu">Thực Đơn</a></li>
+          <li><a href="/new">Tin Tức</a></li>
+          <li><a href="/address">Địa Chỉ</a></li>
         </ul>
       </div>
 

@@ -22,17 +22,17 @@
   
   .content h1 {
     font-size: 36px;
-    color: #000;
     margin-bottom: 20px;
   }
 
   .animated-title{
     font-weight: bold;
     font-family: "Oswald", sans-serif;
+    color: #633c02;
   }
   
   .btn-buy {
-    background-color: #ff4d4f;
+    background-color: #d88453;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -42,7 +42,7 @@
   }
   
   .btn-buy:hover {
-    background-color: #e33c3f;
+    background-color: #633c02;
   }
   
   .image-container {

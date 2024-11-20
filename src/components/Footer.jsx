@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="flex flex-wrap justify-between items-start">
           {/* Phần bên trái */}
           <div className="w-full sm:w-1/3 mb-6 sm:mb-0">
-            <h2 className="text-lg font-bold mb-4">BAMOS COFFEE</h2>
+            <h2 className="text-lg font-bold mb-4">BAMOS<span className="red">COFFEE</span></h2>
             <p className="text-sm leading-relaxed introduce">
               Bamos định vị sẽ là thương hiệu cafe hoạt động 24/7 với không gian sân vườn rộng rãi kết hợp cùng đa dạng các hoạt động phù hợp cho cả các bạn trẻ, sinh viên cũng như là nơi tụ tập cuối tuần cho gia đình, nhóm bạn.
             </p>
@@ -68,7 +68,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-xs text-gray-400 codeby">
-              © 2024 BAMOS COFFEE. Designer by Group 1
+              © 2024 BAMOS<span className="red">COFFEE</span>. Designer by Group 1
             </p>
           </div>
         </div>

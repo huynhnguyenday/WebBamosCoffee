@@ -2,13 +2,19 @@
     background-color: #ffffff;
     color: #000000;
     font-family: "Josefin Sans", sans-serif;
+    height: 250px;
   }
   
   .footer h2 {
-    color: #ff4d4f;
+    color: #000000;
     font-size: 24px; /* Kích thước chữ phần tiêu đề */
+    font-family: 'Oswald', sans-serif;
   }
   
+  .red{
+    color:#ff4d4f;
+  }
+
   .footer a {
     color: #000000;
     font-size: 17px; /* Kích thước chữ trong danh sách mục */
