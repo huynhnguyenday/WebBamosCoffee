@@ -35,6 +35,8 @@ const ProductSlider = () => {
   useEffect(() => {
     if (inView) {
       controls.start("visible");
+    } else {
+      controls.start("hidden"); // Reset animation khi ra ngoài khung nhìn
     }
   }, [controls, inView]);
 
@@ -84,8 +86,12 @@ const ProductSlider = () => {
               initial="hidden"
               animate={controls}
               variants={{
-                hidden: { opacity: 0, y: -50 },
-                visible: { opacity: 1, y: 0, transition: { delay: index * 0.2 } },
+                hidden: { opacity: 0, y: 100 }, // Bắt đầu từ dưới (100px)
+                visible: { 
+                  opacity: 1, 
+                  y: 0, 
+                  transition: { delay: index * 0.2, type: "spring", stiffness: 80 } 
+                },
               }}
             >
               <div className="product-image">

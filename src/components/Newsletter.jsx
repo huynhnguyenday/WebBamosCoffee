@@ -9,7 +9,7 @@ const Newsletter = () => {
                     <div className="newsletter_left flex-1">
                         <div className="newsletter_text">
                             <h4>Đăng ký</h4>
-                            <p>Đăng ký để nhận ngay nhiều voucher giảm giá cực sốc</p>
+                            <p>Đăng ký để nhận thông tin sớm nhất về chương trình giảm giá.</p>
                         </div>
                     </div>
 

@@ -1,0 +1,24 @@
+/* Tùy chỉnh thanh cuộn cho toàn bộ trang web */
+html {
+    scrollbar-width: thin; /* Độ dày của thanh cuộn */
+}
+
+/* Tùy chỉnh thanh cuộn cho các trình duyệt Webkit (Chrome, Safari, v.v.) */
+::-webkit-scrollbar {
+    width: 10px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #525252;  
+    border-radius: 10px;  
+}
+
+::-webkit-scrollbar-track {
+    background-color: #cdcdcd;
+}
+
+/* Cung cấp thanh cuộn cho các phần tử chứa nội dung */
+body, .app-container {
+    height: 100vh; /* Đảm bảo chiều cao của trang đầy đủ */
+    overflow-y: auto; /* Đảm bảo thanh cuộn chỉ xuất hiện khi cần */
+}

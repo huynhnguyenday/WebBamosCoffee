@@ -12,7 +12,7 @@
   }
   
   .red{
-    color:#ff4d4f;
+    color:#C63402;
   }
 
   .footer a {
@@ -45,21 +45,21 @@
   }
   
 .social-icon {
-    width: 60px; /* Kích thước container (hình tròn) */
+    width: 60px; 
     height: 60px;
-    font-size: 35px; /* Kích thước icon */
+    font-size: 35px; 
     color: #000000;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%; /* Tạo hình tròn */
-    background-color: #f5f5f5; /* Màu nền (nếu cần) */
+    border-radius: 50%; 
+    background-color: #f5f5f5; 
     transition: color 0.3s ease, transform 0.3s ease;
   }
   
   .social-icon:hover {
-    color: #ff4d4f; /* Màu khi hover */
-    transform: scale(1.1); /* Phóng to khi hover */
+    color: #ff4d4f; 
+    transform: scale(1.1); 
   }
   
   

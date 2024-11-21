@@ -10,14 +10,15 @@
 }
 
 .menu-header span {
-    color: red; /* Bôi đỏ chữ "Coffee" */
+    color:#C63402; 
 }
 
 .menu-category-wrapper {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    gap: 0; /* Không có khoảng cách giữa các danh mục */
+    gap: 0; 
+    font-weight: bold;
 }
 
 .menu-category-button {
@@ -55,11 +56,12 @@
 
 .menu-items-wrapper {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0; /* Loại bỏ khoảng cách giữa các thẻ */
+    flex-wrap: wrap; /* Cho phép các thẻ thừa được xếp xuống dòng mới */
+    justify-content: flex-start; /* Sắp xếp các item từ trái qua phải */
     margin: 0 auto;
     max-width: 100%;
+    gap: 0; /* Khoảng cách giữa các thẻ */
+    margin-left: 123px;
 }
 
 .menu-item-card {
@@ -72,14 +74,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 222px;
+    width: 250px;
     height: 340px;
     border-left: 1px solid rgb(235, 235, 235);
     border-right: 1px solid rgb(235, 235, 235);
 }
 
 .menu-item-card:hover .menu-item-image img {
-    transform: scale(1.08); 
+    transform: scale(1.18); 
 }
 
 .menu-item-image img {

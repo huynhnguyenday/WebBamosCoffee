@@ -6,12 +6,20 @@ import "./Navbar.css";
 import imgfood1 from "../assets/imgfood1.png";
 import imgfood2 from "../assets/imgfood2.png";
 import imgfood3 from "../assets/imgfood3.png";
+import imgfood4 from "../assets/imgfood4.png";
+import imgfood5 from "../assets/imgfood5.png";
+import imgfood6 from "../assets/imgfood6.png";
+import imgfood7 from "../assets/imgfood7.png";
 
 const Navbar = () => {
   const [cartItems, setCartItems] = useState([
     { id: 1, name: "Cà Phê", price: 50000, img: imgfood1 },
     { id: 2, name: "Trà Sữa", price: 60000, img: imgfood2 },
     { id: 3, name: "Sinh Tố tran chau duong den", price: 40000, img: imgfood3 },
+    { id: 4, name: "Sinh Tố tran chau duong den", price: 40000, img: imgfood4 },
+    { id: 5, name: "Sinh Tố tran chau duong den", price: 40000, img: imgfood5 },
+    { id: 6, name: "Sinh Tố tran chau duong den", price: 40000, img: imgfood6 },
+    { id: 7, name: "Sinh Tố tran chau duong den", price: 40000, img: imgfood7 },
   ]);
   const [isCartVisible, setCartVisible] = useState(false);  
   const [isPopoverVisible, setPopoverVisible] = useState(false);
@@ -196,33 +204,38 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Sidebar Giỏ hàng */}
+      {/* Overlay */}
+      {isCartVisible && <div className="overlay" onClick={handleCartClick}></div>}
+
+      {/* Sidebar giỏ hàng */}
       {isCartVisible && (
         <div className="cart-sidebar">
-          <button className="close-btn" onClick={() => setCartVisible(false)}>
+          <button className="close-btn" onClick={handleCartClick}>
             <FontAwesomeIcon icon={faTimes} />
           </button>
-          <h3 className="cart-title">Giỏ Hàng</h3>
+          <div className="cart-title">Giỏ hàng</div>
           <div className="cart-divider"></div>
           <div className="cart-items">
-            {cartItems.map((item) => (
-              <div key={item.id} className="cart-item">
-                <img src={item.img} alt={item.name} className="cart-item-img" />
-                <div className="cart-item-info">
-                  <span className="cart-item-name">{item.name}</span>
-                  <span className="cart-item-price">{item.price}₫</span>
+          <div className="cart-items">
+              {cartItems.map(item => (
+                <div key={item.id} className="cart-item">
+                  <img src={item.img} alt={item.name} className="cart-item-img" />
+                  <div className="cart-item-info">
+                    <div className="cart-item-name">{item.name}</div>
+                    <div className="cart-item-price">{item.price} VNĐ</div>
+                  </div>
+                  <button className="remove-item-btn" onClick={() => removeItem(item.id)}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </button>
                 </div>
-                <button className="remove-item-btn" onClick={() => removeItem(item.id)}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </button>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
           <div className="cart-total">
-            <span className="total-label">Tổng cộng:</span>
-            <span className="total-price">{totalPrice}₫</span>
+            <span>Tổng cộng</span>
+            <span>{cartItems.reduce((total, item) => total + item.price, 0)} VNĐ</span>
           </div>
-          <button className="checkout-btn">Thanh Toán</button>
+          <button className="checkout-btn">Thanh toán</button>
         </div>
       )}
     </nav>

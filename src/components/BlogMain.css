@@ -23,9 +23,10 @@
   /* Divider Styling */
   .divider {
     width: 50px;
-    height: 2px;
-    background-color: #ff4d4f;
+    height: 5px;
+    background-color: #c63402;
     margin: 0 auto;
+    margin-top: 1rem;
     margin-bottom: 3rem;
   }
   
@@ -44,43 +45,51 @@
   }
   
   /* Blog Item */
-  .blog_item {
-    position: relative;
-    width: 350px; 
-    height: 255px; 
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    margin-bottom: 5rem;
-  }
-  
-  .blog_item:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Overlay Content */
-  .blog_content_overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Nền overlay */
-    color: #fff; /* Màu chữ */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Canh giữa theo chiều ngang */
-    justify-content: center; /* Canh giữa theo chiều dọc */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    text-align: center; /* Căn giữa chữ */
-  }
-  
-  .blog_item:hover .blog_content_overlay {
-    opacity: 1; /* Hiển thị overlay khi hover */
-  }
+.blog_item {
+  position: relative;
+  width: 350px; 
+  height: 255px; 
+  overflow: hidden; /* Ảnh sẽ không tràn ra ngoài khung */
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 5rem;
+}
+
+/* Thêm ảnh vào blog_item */
+.blog_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Đảm bảo ảnh phủ đầy khung mà không bị méo */
+  transition: transform 0.3s ease;
+}
+
+/* Khi hover vào blog_item, phóng to ảnh */
+.blog_item:hover img {
+  transform: scale(1.1); /* Phóng to ảnh khi hover */
+}
+
+/* Overlay Content */
+.blog_content_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Nền overlay */
+  color: #fff; /* Màu chữ */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Canh giữa theo chiều ngang */
+  justify-content: center; /* Canh giữa theo chiều dọc */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center; /* Căn giữa chữ */
+}
+
+.blog_item:hover .blog_content_overlay {
+  opacity: 1; /* Hiển thị overlay khi hover */
+}
+
   
   /* Tiêu đề Blog */
   .blog_title {
