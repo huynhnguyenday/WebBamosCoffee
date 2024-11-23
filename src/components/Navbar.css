@@ -41,12 +41,12 @@
 
 .navbar-links li {
   display: inline;
-  margin: 0 15px;
+  margin: 0 2rem;
 }
 
 .navbar-links a {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   font-family: "Oswald", sans-serif;
   text-decoration: none;
   color: #333;
@@ -54,7 +54,7 @@
 }
 
 .navbar-links a:hover {
-  color: red;
+  color: #d88453;
 }
 
 /* Phần bên phải của navbar */
@@ -459,7 +459,6 @@
 .login-modal .submit-login:hover {
   background-color: #555;
 }
-
 /* Nút on top */
 .scroll-to-top {
   position: fixed;
@@ -485,7 +484,6 @@
   background-color: #000;
   color: #fff;
 }
-
 /* Overlay */
 .overlay {
   position: fixed;

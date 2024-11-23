@@ -15,16 +15,17 @@
   }
   
   .section_title h2 {
-    font-size: 28px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
     font-weight: bold;
-    color: #333;
+    color: #633c02;
   }
 
   /* Divider Styling */
   .divider {
     width: 50px;
-    height: 5px;
-    background-color: #c63402;
+    height: 4px;
+    background-color: #633c02;
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 3rem;

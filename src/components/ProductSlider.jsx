@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -86,7 +87,7 @@ const ProductSlider = () => {
               initial="hidden"
               animate={controls}
               variants={{
-                hidden: { opacity: 0, y: 100 }, // Bắt đầu từ dưới (100px)
+                hidden: { opacity: 0, y: 100 }, 
                 visible: { 
                   opacity: 1, 
                   y: 0, 
@@ -95,9 +96,10 @@ const ProductSlider = () => {
               }}
             >
               <div className="product-image">
-                <a href={`/ProductMain/Detail/${product.id}`}>
+                {/* Thay a bằng Link */}
+                <Link to={`/detailfood/${product.id}`}>
                   <img src={product.image} alt={product.name} />
-                </a>
+                </Link>
               </div>
               <div
                 className={`favorite ${favorites[product.id] ? "favorite-active" : ""}`}
@@ -108,7 +110,7 @@ const ProductSlider = () => {
               <div className="product-bubble">HOT</div>
               <div className="product-info">
                 <h6 className="product-name">
-                  <a href={`/ProductMain/Detail/${product.id}`}>{product.name}</a>
+                  <Link to={`/detailfood/${product.id}`}>{product.name}</Link>
                 </h6>
                 <div className="product-price">
                   <span>{product.sell_price.toLocaleString()} đ</span>

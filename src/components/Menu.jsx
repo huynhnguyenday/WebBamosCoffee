@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Menu.css";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+
+// Hình ảnh món ăn
 import imgfood1 from "../assets/imgfood1.png";
 import imgfood2 from "../assets/imgfood2.png";
 import imgfood3 from "../assets/imgfood3.png";
@@ -8,27 +11,36 @@ import imgfood5 from "../assets/imgfood5.png";
 import imgfood6 from "../assets/imgfood6.png";
 import imgfood7 from "../assets/imgfood7.png";
 
-
 const Menu = () => {
-  const [activeCategory, setActiveCategory] = useState("ALL");
+  const [activeCategory, setActiveCategory] = useState("TẤT CẢ");
   const [favorites, setFavorites] = useState({}); // Dữ liệu yêu thích
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // Dữ liệu menu items
-  const menuItems = [
-    { id: 1, category: "CAFÉ", name: "Bạc xỉu", price: "45,000", oldPrice: "48,000", img: imgfood4 },
-    { id: 2, category: "TRÀ", name: "Trà sen", price: "60,000", img: imgfood2 },
-    { id: 3, category: "TRÀ", name: "Trà sen sữa", price: "55,000", img: imgfood3 },
-    { id: 4, category: "ĐÁ XAY", name: "Trà xanh đá xay", price: "50,000", oldPrice: "55,000", img: imgfood1 },
-    { id: 5, category: "SINH TỐ", name: "Chocolate", price: "45,000", oldPrice: "50,000", img: imgfood5 },
-    { id: 6, category: "TRÀ SỮA", name: "Chocolate", price: "45,000", oldPrice: "50,000", img: imgfood6 },
-    { id: 7, category: "TRÀ LẠNH", name: "Chocolate", price: "45,000", oldPrice: "50,000", img: imgfood7 },
-  ];  
+  // Dữ liệu các sản phẩm
+  const products = [
+    { id: 1, name: "Sinh tố dâu", image: imgfood1, sell_price: 20000, price: 25000, category: "SINH TỐ" },
+    { id: 2, name: "Cà phê sữa", image: imgfood2, sell_price: 30000, price: 35000, category: "CAFÉ" },
+    { id: 3, name: "Cà phê đen", image: imgfood3, sell_price: 40000, price: 45000, category: "CAFÉ" },
+    { id: 4, name: "Trà sữa trân châu đường đen", image: imgfood4, sell_price: 50000, price: 55000, category: "TRÀ SỮA" },
+    { id: 5, name: "Trà đào cam sả", image: imgfood5, sell_price: 60000, price: 65000, category: "TRÀ" },
+    { id: 6, name: "Cam tắc xí muội", image: imgfood6, sell_price: 70000, price: 75000, category: "TRÀ LẠNH" },
+    { id: 7, name: "Trà sữa ô long", image: imgfood7, sell_price: 80000, price: 85000, category: "TRÀ SỮA" },
+  ];
 
-  // Danh mục món ăn
-  const categories = ["ALL", "CAFÉ", "ĐÁ XAY", "TRÀ", "TRÀ SỮA", "SINH TỐ", "TRÀ LẠNH"];
+  // Các danh mục món ăn
+  const categories = ["TẤT CẢ", "CAFÉ", "TRÀ", "TRÀ SỮA", "SINH TỐ", "TRÀ LẠNH"];
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const category = queryParams.get("category");
+    if (category) {
+      setActiveCategory(category);
+    }
+  }, [location.search]);
 
   // Lọc món ăn theo danh mục đã chọn
-  const filterItems = activeCategory === "ALL" ? menuItems : menuItems.filter(item => item.category === activeCategory);
+  const filterItems = activeCategory === "TẤT CẢ" ? products : products.filter(item => item.category === activeCategory);
 
   // Xử lý khi nhấn vào yêu thích
   const handleToggleFavorite = (id) => {
@@ -43,6 +55,12 @@ const Menu = () => {
     console.log(`Add to cart: ${id}`);
   };
 
+  // Xử lý khi nhấn vào danh mục món ăn
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+    navigate(`/menu?category=${category}`);
+  };
+
   return (
     <div className="menu-wrapper">
       <h1 className="menu-header">
@@ -55,7 +73,7 @@ const Menu = () => {
           <button
             key={category}
             className={`menu-category-button ${activeCategory === category ? "active" : ""}`}
-            onClick={() => setActiveCategory(category)}
+            onClick={() => handleCategoryClick(category)}
           >
             {category}
           </button>
@@ -67,9 +85,10 @@ const Menu = () => {
         {filterItems.map((item) => (
           <div className="menu-item-card" key={item.id}>
             <div className="menu-item-image">
-              <a href={`/ProductMain/Detail/${item.id}`}>
-                <img src={item.img} alt={item.name} />
-              </a>
+              {/* Dẫn tới trang chi tiết sản phẩm */}
+              <Link to={`/detailfood/${item.id}`}>
+                <img src={item.image} alt={item.name} />
+              </Link>
             </div>
             {/* Icon yêu thích */}
             <div
@@ -80,11 +99,11 @@ const Menu = () => {
             </div>
             <div className="menu-item-info">
               <h6 className="menu-item-name">
-                <a href={`/ProductMain/Detail/${item.id}`}>{item.name}</a>
+                <Link to={`/ProductMain/Detail/${item.id}`}>{item.name}</Link>
               </h6>
               <div className="menu-item-price">
                 <span>{item.price}</span>
-                {item.oldPrice && <span className="price-old">{item.oldPrice}</span>}
+                {item.sell_price && <span className="price-old">{item.sell_price}</span>}
               </div>
             </div>
             {/* Nút thêm vào giỏ hàng */}

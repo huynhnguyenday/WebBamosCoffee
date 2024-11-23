@@ -39,6 +39,8 @@
   flex-direction: column;
   justify-content: space-between;
   height: 350px;
+  border-left: 1px solid rgb(235, 235, 235);
+  border-right: 1px solid rgb(235, 235, 235);
 }
 
 .product-card:hover {
@@ -56,7 +58,7 @@
 
 
 .product-card:hover .product-image img {
-  transform: scale(1.1); 
+  transform: scale(1.08); 
 }
 
 
@@ -105,7 +107,7 @@
 }
 
 .product-name {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   color: #333;
   margin-bottom: 8px;
@@ -144,16 +146,17 @@
 .red-button button {
   width: 100%;
   padding: 12px 0;
-  background-color: #ff4d4f;
+  background-color: #d88453;
   color: #fff;
   border: none;
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .red-button button:hover {
-  background-color: #e64343;
+  background-color: #633c02;
 }
 
 /* Hiding Navigation Arrows */

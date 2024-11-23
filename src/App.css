@@ -1,20 +1,20 @@
 /* Tùy chỉnh thanh cuộn cho toàn bộ trang web */
 html {
-    scrollbar-width: thin; /* Độ dày của thanh cuộn */
+    scrollbar-width: thin; /* Độ dày của thanh cuộn cho các trình duyệt hỗ trợ */
 }
 
 /* Tùy chỉnh thanh cuộn cho các trình duyệt Webkit (Chrome, Safari, v.v.) */
 ::-webkit-scrollbar {
-    width: 10px; 
+    width: 10px;  /* Đặt độ rộng thanh cuộn */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #525252;  
-    border-radius: 10px;  
+    background-color: #525252;  /* Màu của thumb (phần kéo) */
+    border-radius: 10px;  /* Làm tròn các góc */
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #cdcdcd;
+    background-color: #cdcdcd;  /* Màu nền của track (vùng chứa thanh cuộn) */
 }
 
 /* Cung cấp thanh cuộn cho các phần tử chứa nội dung */

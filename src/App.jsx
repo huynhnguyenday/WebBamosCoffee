@@ -4,8 +4,9 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Menu from "./components/Menu";
-import Newsletter from "./components/Newsletter";
 import Address from "./components/Address";
+import DetailFood from "./components/DetailFood";  // Import component DetailFood
+import Newsletter from "./components/Newsletter";
 import "./app.css";
 
 const App = () => {
@@ -14,12 +15,11 @@ const App = () => {
       <div className="app-container">
         <Navbar />
         <Routes>
-          {/* Đặt Home là trang chủ mặc định */}
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/address" element={<Address />} />
-          {/* Chuyển hướng tất cả các tuyến không xác định về Home */}
+          <Route path="/detailfood/:id" element={<DetailFood />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Newsletter />
@@ -29,4 +29,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App; 

@@ -98,10 +98,10 @@ const Navbar = () => {
 
       <div className="navbar-center">
         <ul className="navbar-links">
-          <li><a href="/home">Trang Chủ</a></li>
-          <li><a href="/menu">Thực Đơn</a></li>
-          <li><a href="/new">Tin Tức</a></li>
-          <li><a href="/address">Địa Chỉ</a></li>
+          <li><a href="/home">TRANG CHỦ</a></li>
+          <li><a href="/menu">THỰC ĐƠN</a></li>
+          <li><a href="/new">TIN TỨC</a></li>
+          <li><a href="/address">ĐỊA CHỈ</a></li>
         </ul>
       </div>
 

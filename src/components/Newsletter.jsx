@@ -7,9 +7,9 @@ const Newsletter = () => {
             <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row">
                     <div className="newsletter_left flex-1">
-                        <div className="newsletter_text">
-                            <h4>Đăng ký</h4>
-                            <p>Đăng ký để nhận thông tin sớm nhất về chương trình giảm giá.</p>
+                        <div>
+                            <h4 className="title-dangky">Đăng ký</h4>
+                            <p className="newsletter_text">Đăng ký để nhận thông tin sớm nhất về chương trình giảm giá.</p>
                         </div>
                     </div>
 
