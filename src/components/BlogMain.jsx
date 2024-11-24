@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import "./BlogMain.css";
@@ -7,30 +8,30 @@ import imgblog1 from "../assets/imgblog1.png";
 import imgblog2 from "../assets/imgblog2.png";
 import imgblog3 from "../assets/imgblog3.png";
 
-const blogs = [
+export const blogs = [ // Export blogs
   {
     id: 1,
     title: "Here are the trends I see coming this fall",
-    date: "Dec 01, 2017",
+    date: "27/04/2024",
     author: "admin",
     image: imgblog1,
-    link: "#",
+    content: "Detailed content for blog 1. Here is where the full article will be displayed.",
   },
   {
     id: 2,
     title: "The ultimate guide to your autumn wardrobe",
-    date: "Nov 15, 2017",
+    date: "25/02/2024",
     author: "editor",
     image: imgblog2,
-    link: "#",
+    content: "Detailed content for blog 2. Here's everything you need to know about autumn wardrobes.",
   },
   {
     id: 3,
     title: "Top 5 destinations for this winter vacation",
-    date: "Oct 30, 2017",
+    date: "27/02/2024",
     author: "traveller",
     image: imgblog3,
-    link: "#",
+    content: "Detailed content for blog 3. Explore the best destinations for your winter vacation!",
   },
 ];
 
@@ -42,7 +43,7 @@ const BlogMain = () => {
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut", delay: i * 0.4 }, // Thêm delay dựa trên index
+      transition: { duration: 0.6, ease: "easeOut", delay: i * 0.4 },
     }),
   };
 
@@ -64,7 +65,7 @@ const BlogMain = () => {
               className="col-lg-4 blog_item_col"
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
-              custom={index} 
+              custom={index}
               variants={cardVariants}
             >
               <div className="blog_item">
@@ -74,9 +75,9 @@ const BlogMain = () => {
                   <span className="blog_meta">
                     by {blog.author} | {blog.date}
                   </span>
-                  <a className="blog_more" href={blog.link}>
+                  <Link className="blog_more" to={`/blogs/${blog.id}`}> {/* Correct Link */}
                     Read more
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>

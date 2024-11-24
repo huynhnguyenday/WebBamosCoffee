@@ -100,7 +100,7 @@ const Navbar = () => {
         <ul className="navbar-links">
           <li><a href="/home">TRANG CHỦ</a></li>
           <li><a href="/menu">THỰC ĐƠN</a></li>
-          <li><a href="/new">TIN TỨC</a></li>
+          <li><a href="/news">TIN TỨC</a></li>
           <li><a href="/address">ĐỊA CHỈ</a></li>
         </ul>
       </div>

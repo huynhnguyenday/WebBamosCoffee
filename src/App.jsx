@@ -5,8 +5,11 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Menu from "./components/Menu";
 import Address from "./components/Address";
-import DetailFood from "./components/DetailFood";  // Import component DetailFood
+import DetailFood from "./components/DetailFood";
 import Newsletter from "./components/Newsletter";
+import DetailBlog from "./components/DetailBlog";
+import BlogMain from "./components/BlogMain";
+import News from "./components/News";
 import "./app.css";
 
 const App = () => {
@@ -18,8 +21,11 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/news" element={<News />} />
           <Route path="/address" element={<Address />} />
           <Route path="/detailfood/:id" element={<DetailFood />} />
+          <Route path="/blogs" element={<BlogMain />} />
+          <Route path="/blogs/:id" element={<DetailBlog />} /> 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Newsletter />
@@ -29,4 +35,4 @@ const App = () => {
   );
 };
 
-export default App; 
+export default App;

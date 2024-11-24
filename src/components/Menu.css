@@ -34,13 +34,13 @@
 }
 
 .menu-category-button.active {
-    background-color: #ff3b3b;
+    background-color: #633c02;
     color: #fff;
-    border-color: #ff3b3b; /* Thay đổi màu border khi active */
+    border-color: #633c02; /* Thay đổi màu border khi active */
 }
 
 .menu-category-button:hover {
-    background-color: #ffb3b3;
+    background-color: #d88453;
 }
 
 /* Divider dưới chữ Menu Bamos Coffee */
@@ -102,7 +102,7 @@
 }
 
 .favorite-icon.active {
-    color: red;
+    color: #d88453;
 }
 
 .menu-item-info {
@@ -119,7 +119,7 @@
 
 .menu-item-price {
     font-size: 14px;
-    color: #ff4d4f;
+    color: #925802;
     margin-bottom: 10px;
     font-weight: bold;
 }
@@ -149,7 +149,7 @@
 .add-to-cart-button button {
     width: 100%;
     padding: 12px 0;
-    background-color: #ff4d4f;
+    background-color: #d88453;
     color: #fff;
     border: none;
     font-size: 14px;
@@ -158,5 +158,6 @@
 }
 
 .add-to-cart-button button:hover {
-    background-color: #e64343;
+    background-color: #633c02;
+    font-weight: 600;
 }
