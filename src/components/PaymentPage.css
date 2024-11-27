@@ -1,0 +1,67 @@
+.payment-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .payment-details {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .payment-products {
+    flex: 1;  /* Chiếm 40% chiều rộng */
+  }
+  
+  .payment-summary {
+    flex: 1;  /* Chiếm 50% chiều rộng */
+  }
+  
+  .customer-info {
+    flex: 2;  /* Chiếm 60% chiều rộng */
+    margin-left: 20px;
+  }
+  
+  .input-group {
+    margin-bottom: 10px;
+  }
+  
+  .input-group label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .product {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .product-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  
+  .product-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-name {
+    font-weight: bold;
+  }
+  
+  .product-price {
+    color: #333;
+  }
+
+  

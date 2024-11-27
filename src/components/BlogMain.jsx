@@ -73,10 +73,10 @@ const BlogMain = () => {
                 <div className="blog_content_overlay">
                   <h4 className="blog_title">{blog.title}</h4>
                   <span className="blog_meta">
-                    by {blog.author} | {blog.date}
+                    Bởi {blog.author} | {blog.date}
                   </span>
-                  <Link className="blog_more" to={`/blogs/${blog.id}`}> {/* Correct Link */}
-                    Read more
+                  <Link className="blog_more" to={`/blogs/${blog.id}`}> 
+                    Đọc Thêm
                   </Link>
                 </div>
               </div>

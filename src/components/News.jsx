@@ -15,7 +15,7 @@ const News = () => {
   return (
     <div className="container mx-auto my-10 px-4">
       <div className="grid grid-cols-10 gap-6">
-        {/* Phần hiển thị tất cả các bài viết (7 phần) */}
+        {/* Phần hiển thị tất cả các bài viết*/}
         <div className="col-span-10 lg:col-span-7 all-blogs">
           <h1 className="title-news">TẤT CẢ TIN TỨC BAMOS</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -46,7 +46,7 @@ const News = () => {
           </div>
         </div>
 
-        {/* Phần bài viết khác (3 phần) */}
+        {/* Phần bài viết khác */}
         <div className="col-span-10 lg:col-span-3 related-blogs">
           <h3>Bài viết mới</h3>
           <ul>

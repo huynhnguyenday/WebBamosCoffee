@@ -235,7 +235,12 @@ const Navbar = () => {
             <span>Tổng cộng</span>
             <span>{cartItems.reduce((total, item) => total + item.price, 0)} VNĐ</span>
           </div>
-          <button className="checkout-btn">Thanh toán</button>
+          <Link 
+            to="/payment" 
+            state={{ cartItems, totalPrice }}
+          >
+            <button className="checkout-btn">Thanh toán</button>
+          </Link>
         </div>
       )}
     </nav>

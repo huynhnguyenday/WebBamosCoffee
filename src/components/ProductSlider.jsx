@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
+import ModalProduct from "./ModalProduct";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -27,22 +28,23 @@ const products = [
 
 const ProductSlider = () => {
   const [favorites, setFavorites] = useState({});
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
   const swiperRef = useRef(null);
 
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.5 });
 
-  // Trigger animation when in view
   useEffect(() => {
     if (inView) {
       controls.start("visible");
     } else {
-      controls.start("hidden"); // Reset animation khi ra ngoài khung nhìn
+      controls.start("hidden");
     }
   }, [controls, inView]);
 
-  const handleAddToCart = (productId) => {
-    console.log(`Sản phẩm ${productId} đã được thêm vào giỏ hàng!`);
+  const handleAddToCart = (product) => {
+    setSelectedProduct(product);
   };
 
   const handleToggleFavorite = (productId) => {
@@ -52,16 +54,9 @@ const ProductSlider = () => {
     }));
   };
 
-  const handlePrevClick = () => {
-    if (swiperRef.current.swiper.realIndex > 0) {
-      swiperRef.current.swiper.slidePrev();
-    }
-  };
-
-  const handleNextClick = () => {
-    if (swiperRef.current.swiper.realIndex < products.length - 1) {
-      swiperRef.current.swiper.slideNext();
-    }
+  const handleCloseModal = () => {
+    setSelectedProduct(null);
+    setQuantity(1);
   };
 
   return (
@@ -87,16 +82,15 @@ const ProductSlider = () => {
               initial="hidden"
               animate={controls}
               variants={{
-                hidden: { opacity: 0, y: 100 }, 
-                visible: { 
-                  opacity: 1, 
-                  y: 0, 
-                  transition: { delay: index * 0.2, type: "spring", stiffness: 80 } 
+                hidden: { opacity: 0, y: 100 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { delay: index * 0.2, type: "spring", stiffness: 80 },
                 },
               }}
             >
               <div className="product-image">
-                {/* Thay a bằng Link */}
                 <Link to={`/detailfood/${product.id}`}>
                   <img src={product.image} alt={product.name} />
                 </Link>
@@ -120,15 +114,24 @@ const ProductSlider = () => {
                 </div>
               </div>
               <div className="red-button">
-                <button onClick={() => handleAddToCart(product.id)}>Thêm vào giỏ hàng</button>
+                <button onClick={() => handleAddToCart(product)}>Thêm vào giỏ hàng</button>
               </div>
             </motion.div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      <div className="swiper-button-prev" onClick={handlePrevClick}></div>
-      <div className="swiper-button-next" onClick={handleNextClick}></div>
+      <div className="swiper-button-prev" onClick={() => swiperRef.current?.swiper.slidePrev()}></div>
+      <div className="swiper-button-next" onClick={() => swiperRef.current?.swiper.slideNext()}></div>
+
+      {selectedProduct && (
+        <ModalProduct
+          selectedProduct={selectedProduct}
+          quantity={quantity}
+          setQuantity={setQuantity}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 };

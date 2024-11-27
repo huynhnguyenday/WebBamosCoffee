@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import ModalProduct from "./ModalProduct"; // Import ModalProduct component
 import "./Menu.css";
-import { useLocation, useNavigate, Link } from "react-router-dom";
 
-// Hình ảnh món ăn
+// Import hình ảnh
 import imgfood1 from "../assets/imgfood1.png";
 import imgfood2 from "../assets/imgfood2.png";
 import imgfood3 from "../assets/imgfood3.png";
@@ -12,12 +13,14 @@ import imgfood6 from "../assets/imgfood6.png";
 import imgfood7 from "../assets/imgfood7.png";
 
 const Menu = () => {
-  const [activeCategory, setActiveCategory] = useState("TẤT CẢ");
-  const [favorites, setFavorites] = useState({}); // Dữ liệu yêu thích
+  const [activeCategory, setActiveCategory] = useState("TẤT CẢ"); // Danh mục đang chọn
+  const [favorites, setFavorites] = useState({}); // Danh sách yêu thích
+  const [selectedProduct, setSelectedProduct] = useState(null); // Sản phẩm đã chọn
+  const [quantity, setQuantity] = useState(1); // Số lượng sản phẩm trong Modal
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Dữ liệu các sản phẩm
+  // Danh sách sản phẩm
   const products = [
     { id: 1, name: "Sinh tố dâu", image: imgfood1, sell_price: 20000, price: 25000, category: "SINH TỐ" },
     { id: 2, name: "Cà phê sữa", image: imgfood2, sell_price: 30000, price: 35000, category: "CAFÉ" },
@@ -28,34 +31,39 @@ const Menu = () => {
     { id: 7, name: "Trà sữa ô long", image: imgfood7, sell_price: 80000, price: 85000, category: "TRÀ SỮA" },
   ];
 
-  // Các danh mục món ăn
+  // Danh sách danh mục
   const categories = ["TẤT CẢ", "CAFÉ", "TRÀ", "TRÀ SỮA", "SINH TỐ", "TRÀ LẠNH"];
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const category = queryParams.get("category");
-    if (category) {
-      setActiveCategory(category);
-    }
+    if (category) setActiveCategory(category);
   }, [location.search]);
 
-  // Lọc món ăn theo danh mục đã chọn
-  const filterItems = activeCategory === "TẤT CẢ" ? products : products.filter(item => item.category === activeCategory);
+  // Lọc sản phẩm theo danh mục
+  const filterItems =
+    activeCategory === "TẤT CẢ" ? products : products.filter((item) => item.category === activeCategory);
 
-  // Xử lý khi nhấn vào yêu thích
+  // Xử lý khi nhấn yêu thích
   const handleToggleFavorite = (id) => {
-    setFavorites({
-      ...favorites,
-      [id]: !favorites[id],
-    });
+    setFavorites((prevFavorites) => ({
+      ...prevFavorites,
+      [id]: !prevFavorites[id],
+    }));
   };
 
-  // Xử lý khi nhấn vào thêm món ăn vào giỏ hàng
-  const handleAddToCart = (id) => {
-    console.log(`Add to cart: ${id}`);
+  // Xử lý khi nhấn "Thêm vào giỏ hàng"
+  const handleAddToCart = (product) => {
+    setSelectedProduct(product);
   };
 
-  // Xử lý khi nhấn vào danh mục món ăn
+  // Đóng Modal
+  const handleCloseModal = () => {
+    setSelectedProduct(null);
+    setQuantity(1);
+  };
+
+  // Chuyển đổi danh mục
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
     navigate(`/menu?category=${category}`);
@@ -67,7 +75,7 @@ const Menu = () => {
         Thực đơn Bamos<span>Coffee</span>
       </h1>
 
-      {/* Danh sách các danh mục */}
+      {/* Hiển thị danh mục */}
       <div className="menu-category-wrapper">
         {categories.map((category) => (
           <button
@@ -80,39 +88,54 @@ const Menu = () => {
         ))}
       </div>
 
-      {/* Hiển thị món ăn theo danh mục đã chọn */}
+      {/* Hiển thị danh sách sản phẩm */}
       <div className="menu-items-wrapper">
         {filterItems.map((item) => (
           <div className="menu-item-card" key={item.id}>
             <div className="menu-item-image">
-              {/* Dẫn tới trang chi tiết sản phẩm */}
               <Link to={`/detailfood/${item.id}`}>
                 <img src={item.image} alt={item.name} />
               </Link>
             </div>
+
             {/* Icon yêu thích */}
             <div
-              className={`favorite-icon ${favorites[item.id] ? 'active' : ''}`}
+              className={`favorite-icon ${favorites[item.id] ? "active" : ""}`}
               onClick={() => handleToggleFavorite(item.id)}
             >
-              {favorites[item.id] ? '♥' : '♡'}
+              {favorites[item.id] ? "♥" : "♡"}
             </div>
+
+            {/* Thông tin sản phẩm */}
             <div className="menu-item-info">
               <h6 className="menu-item-name">
-                <Link to={`/ProductMain/Detail/${item.id}`}>{item.name}</Link>
+                <Link to={`/detailfood/${item.id}`}>{item.name}</Link>
               </h6>
               <div className="menu-item-price">
-                <span>{item.price}</span>
-                {item.sell_price && <span className="price-old">{item.sell_price}</span>}
+                <span>{item.sell_price.toLocaleString()} đ</span>
+                {item.price !== item.sell_price && (
+                  <span className="price-old">{item.price.toLocaleString()} đ</span>
+                )}
               </div>
             </div>
+
             {/* Nút thêm vào giỏ hàng */}
             <div className="add-to-cart-button">
-              <button onClick={() => handleAddToCart(item.id)}>Thêm vào giỏ hàng</button>
+              <button onClick={() => handleAddToCart(item)}>Thêm vào giỏ hàng</button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Modal hiển thị sản phẩm */}
+      {selectedProduct && (
+        <ModalProduct
+          selectedProduct={selectedProduct}
+          quantity={quantity}
+          setQuantity={setQuantity}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 };

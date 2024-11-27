@@ -28,9 +28,7 @@
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-style: normal;
-    background-image: -webkit-linear-gradient(35deg, #860000 0%, #925802 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #663402;
   }
 
   .price{
@@ -190,11 +188,6 @@
   .quantity-input::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
-  
-  /* Tắt spinner cho Firefox */
-  .quantity-input {
-    -moz-appearance: textfield; /* Vô hiệu hóa spinner */
   }
   
   /* Đảm bảo spinner bị tắt theo chuẩn */
