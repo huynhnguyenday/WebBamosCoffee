@@ -17,6 +17,6 @@ html {
 
 /* Cung cấp thanh cuộn cho các phần tử chứa nội dung */
 body, .app-container {
-    /* height: 100vh; Đảm bảo chiều cao của trang đầy đủ
-    overflow-y: auto; Đảm bảo thanh cuộn chỉ xuất hiện khi cần */
+    height: 100vh; 
+    overflow-y: auto; 
 }

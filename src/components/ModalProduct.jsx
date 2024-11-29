@@ -35,42 +35,41 @@ const ModalProduct = ({ selectedProduct, quantity, setQuantity, onClose, addToCa
   };
 
   return (
-    <div className="modal-product">
-    <div className="modal-content-product">
-      <div className="modal-left">
-        <img src={selectedProduct.image} alt={selectedProduct.name} className="modal-image" />
-      </div>
-      <div className="modal-right">
-        <h1 className="modal-title">{selectedProduct.name}</h1>
-        <p className="modal-price">
-          <span className="modal-sell-price">{selectedProduct.sell_price.toLocaleString()}đ</span>
-          <span className="modal-price-old">{selectedProduct.price.toLocaleString()}đ</span>
-        </p>
-        <div className="separator"></div>
-        <div className="modal-quantity">
-          <span className="quantity-label">Số lượng:</span>
-          <div className="quantity-controls">
-            <button className="btn-minus" onClick={() => setQuantity((prev) => Math.max(prev - 1, 1))}>-</button>
-            <input
-              type="text"
-              value={quantity}
-              onChange={handleQuantityChange}
-              onBlur={handleBlur}
-              className="quantity-input-modal"
-            />
-            <button className="btn-plus" onClick={() => setQuantity((prev) => prev + 1)}>+</button>
-          </div>
+    <div className="modal">
+      <div className="modal-content-food">
+        <div className="modal-left">
+          <img src={selectedProduct.image} alt={selectedProduct.name} className="modal-image" />
         </div>
-        <button className="add-to-cart-btn" onClick={handleAddToCart}>
-          <FontAwesomeIcon icon={faBasketShopping} /> Thêm vào giỏ
-        </button>
-        <button className="close-modal-btn" onClick={onClose}>
-          <FontAwesomeIcon icon={faXmark} />
-        </button>
+        <div className="modal-right">
+          <h1 className="modal-title">{selectedProduct.name}</h1>
+          <p className="modal-price">
+            <span className="modal-sell-price">{selectedProduct.sell_price.toLocaleString()}đ</span>
+            <span className="modal-price-old">{selectedProduct.price.toLocaleString()}đ</span>
+          </p>
+          <div className="separator"></div>
+          <div className="modal-quantity">
+            <span className="quantity-label">Số lượng:</span>
+            <div className="quantity-controls">
+              <button className="btn-minus" onClick={() => setQuantity((prev) => Math.max(prev - 1, 1))}>-</button>
+              <input
+                type="text"
+                value={quantity}
+                onChange={handleQuantityChange}
+                onBlur={handleBlur}
+                className="quantity-input-modal"
+              />
+              <button className="btn-plus" onClick={() => setQuantity((prev) => prev + 1)}>+</button>
+            </div>
+          </div>
+          <button className="add-to-cart-btn" onClick={handleAddToCart}>
+            <FontAwesomeIcon icon={faBasketShopping} /> Thêm vào giỏ
+          </button>
+          <button className="close-modal-btn" onClick={onClose}>
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-
   );
 };
 

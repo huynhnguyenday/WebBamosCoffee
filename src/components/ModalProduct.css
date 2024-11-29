@@ -11,7 +11,7 @@
     z-index: 1000;
   }
   
-  .modal-content-product {
+  .modal-content-food {
     display: flex;
     flex-direction: row;
     background: #fff;
@@ -19,6 +19,7 @@
     overflow: hidden;
     max-width: 800px;
     width: 90%;
+    position: relative;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   }
   
