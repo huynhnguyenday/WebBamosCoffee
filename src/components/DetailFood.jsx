@@ -75,15 +75,15 @@ const DetailFood = () => {
         <div className="separator"></div>
         <span className="quantity-name">số lượng: </span>
         <div className="quantity-picker">
-          <button className="btn-minus" onClick={() => setQuantity((prev) => Math.max(prev - 1, 1))}>-</button>
+          <button className="btn-minus-food" onClick={() => setQuantity((prev) => Math.max(prev - 1, 1))}>-</button>
           <input
             type="text"
             value={quantity}
             onChange={handleQuantityChange}
             onBlur={handleBlur}
-            className="quantity-input"
+            className="quantity-input "
           />
-          <button className="btn-plus" onClick={() => setQuantity((prev) => prev + 1)}>+</button>
+          <button className="btn-plus-food" onClick={() => setQuantity((prev) => prev + 1)}>+</button>
         </div>
         <button className="add-to-cart-btn">
           <FontAwesomeIcon icon={faBasketShopping} /> Thêm vào giỏ

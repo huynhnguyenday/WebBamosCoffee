@@ -121,9 +121,6 @@ const Navbar = () => {
         </a>
       </div>
 
-      {/* Nút lên trên */}
-      
-
       {/* Modal Đăng nhập */}
       {isLoginModalVisible && (
         <div className="login-modal">
@@ -144,7 +141,7 @@ const Navbar = () => {
                   <button type="submit" className="submit-login">Đăng Ký</button>
                 </form>
                 <div className="login-options">
-                  <a href="#login" className="register" onClick={handleSwitchToLogin}>
+                  <a href="#admin" className="register" onClick={handleSwitchToLogin}>
                     Đã có tài khoản?
                   </a>
                 </div>
@@ -156,7 +153,7 @@ const Navbar = () => {
                 <form>
                   <input type="text" placeholder="Tên đăng nhập" />
                   <input type="password" placeholder="Mật khẩu" />
-                  <button type="submit" className="submit-login">Đăng Nhập</button>
+                  <button type="submit" className="submit-login"> <Link to="/admin">Đăng Nhập</Link> </button>
                 </form>
                 <div className="login-options">
                   <a href="#forgot-password" className="forgot-password">

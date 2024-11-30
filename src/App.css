@@ -15,7 +15,6 @@ html {
     background-color: #cdcdcd;  
 }
 
-/* Cung cấp thanh cuộn cho các phần tử chứa nội dung */
 body, .app-container {
     height: 100vh; 
     overflow-y: auto; 
