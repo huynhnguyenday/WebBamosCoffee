@@ -20,7 +20,7 @@ const DetailBlog = () => {
           <h2>{blog.title}</h2>
           <div className="divider"></div>
           <p className="author-date">
-            Được viết bởi  {blog.author} | Ngày: {blog.date}
+             Ngày: {blog.date}
           </p>
           <img src={blog.image} alt={blog.title} />
           <p className="content-blog">{blog.content}</p>

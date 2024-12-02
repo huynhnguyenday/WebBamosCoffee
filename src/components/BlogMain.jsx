@@ -13,7 +13,6 @@ export const blogs = [ // Export blogs
     id: 1,
     title: "Here are the trends I see coming this fall",
     date: "27/04/2024",
-    author: "admin",
     image: imgblog1,
     content: "Detailed content for blog 1. Here is where the full article will be displayed.",
   },
@@ -21,7 +20,6 @@ export const blogs = [ // Export blogs
     id: 2,
     title: "The ultimate guide to your autumn wardrobe",
     date: "25/02/2024",
-    author: "editor",
     image: imgblog2,
     content: "Detailed content for blog 2. Here's everything you need to know about autumn wardrobes.",
   },
@@ -29,7 +27,6 @@ export const blogs = [ // Export blogs
     id: 3,
     title: "Top 5 destinations for this winter vacation",
     date: "27/02/2024",
-    author: "traveller",
     image: imgblog3,
     content: "Detailed content for blog 3. Explore the best destinations for your winter vacation!",
   },
@@ -73,7 +70,7 @@ const BlogMain = () => {
                 <div className="blog_content_overlay">
                   <h4 className="blog_title">{blog.title}</h4>
                   <span className="blog_meta">
-                    Bởi {blog.author} | {blog.date}
+                   {blog.date}
                   </span>
                   <Link className="blog_more" to={`/blogs/${blog.id}`}> 
                     Đọc Thêm

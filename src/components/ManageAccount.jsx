@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faPen, faEye, faEyeSlash, faToggleOn, faToggleOff } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faPen, faToggleOn, faToggleOff } from "@fortawesome/free-solid-svg-icons";
 
 // Dữ liệu tài khoản ban đầu
 const initialAccounts = [
@@ -65,7 +65,6 @@ const ManageAccount = () => {
           <table className="min-w-full table-auto">
             <thead>
               <tr className="bg-gray-100">
-                <th className="py-2 px-4 text-center">ID</th>
                 <th className="py-2 px-4 text-left">Username</th>
                 <th className="py-2 px-4 text-center">Number</th>
                 <th className="py-2 px-4 text-left">Gmail</th>
@@ -79,7 +78,6 @@ const ManageAccount = () => {
             <tbody >
               {filteredAccounts.map((account) => (
                 <tr key={account.id} className="border-b">
-                  <td className="py-6 px-4 text-center">{account.id}</td>
                   <td className="py-6 px-4 font-bold">{account.username}</td>
                   <td className="py-6 px-4 text-center">{account.number}</td>
                   <td className="py-6 px-4">{account.gmail}</td>
