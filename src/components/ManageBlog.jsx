@@ -12,21 +12,21 @@ const blogs = [
     title: "Here are the trends I see coming this fall",
     date: "27/04/2024",
     image: imgblog1,
-    content: "Detailed content for blog 1. Here is where the full article will be displayed.",
+    content: "Detailed content for blog 1. Here is where the full article will be displayed. This is a long content for testing purposes.",
   },
   {
     id: 2,
     title: "The ultimate guide to your autumn wardrobe",
     date: "25/02/2024",
     image: imgblog2,
-    content: "Detailed content for blog 2. Here's everything you need to know about autumn wardrobes.",
+    content: "Detailed content for blog 2. Here's everything you need to know about autumn wardrobes. This content is also a bit long to check how it is displayed.",
   },
   {
     id: 3,
     title: "Top 5 destinations for this winter vacation",
     date: "27/02/2024",
     image: imgblog3,
-    content: "Detailed content for blog 3. Explore the best destinations for your winter vacation!",
+    content: "Detailed content for blog 3. Explore the best destinations for your winter vacation! This content has some extra length.",
   },
 ];
 
@@ -45,6 +45,14 @@ const ManageBlog = () => {
   const deleteBlog = (id) => {
     const updatedBlogs = blogList.filter((blog) => blog.id !== id);
     setBlogList(updatedBlogs);
+  };
+
+  // Hàm để cắt nội dung
+  const truncateContent = (content, length) => {
+    if (content.length > length) {
+      return content.substring(0, length) + "..."; // Cắt nội dung và thêm dấu "..."
+    }
+    return content;
   };
 
   return (
@@ -94,7 +102,9 @@ const ManageBlog = () => {
                     <img src={blog.image} alt={blog.title} className="w-16 h-16 object-cover rounded" />
                   </td>
                   <td className="py-4 px-4 font-bold">{blog.title}</td>
-                  <td className="py-4 px-4 text-center">{blog.content}</td>
+                  <td className="py-4 px-4 text-center">
+                    {truncateContent(blog.content, 50)} {/* Cắt nội dung tại đây */}
+                  </td>
                   <td className="py-4 px-4 text-center">{blog.date}</td>
                   <td className="py-4 px-4 text-center">
                     <button className="text-blue-700 px-3 py-1 mr-2 text-center rounded-md hover:bg-slate-300 hover:rounded-full">

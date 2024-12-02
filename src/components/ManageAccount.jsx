@@ -1,34 +1,37 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faPen, faToggleOn, faToggleOff } from "@fortawesome/free-solid-svg-icons";
+import AddAccount from "./AddAccount"; // Đảm bảo file AddAccount.js được import chính xác
 
-// Dữ liệu tài khoản ban đầu
 const initialAccounts = [
-  { id: 1, username: "admin01", password: "adminpass", gmail: "admin01@gmail.com", number: "0123456789",createAT: "30-11-2024", updateAt:"30-11-2024", isActive: true, role: "admin" },
-  { id: 2, username: "staff01", password: "staffpass", gmail: "staff01@gmail.com", number: "0987654321",createAT: "30-11-2024", updateAt:"30-11-2024", isActive: false, role: "staff" },
-  { id: 3, username: "customer01", password: "customerpass", gmail: "customer01@gmail.com", number: "1234567890",createAT: "30-11-2024", updateAt:"30-11-2024", isActive: true, role: "customer" },
-  { id: 4, username: "staff02", password: "staffpass", gmail: "staff02@gmail.com", number: "9876543210",createAT: "30-11-2024", updateAt:"30-11-2024", isActive: true, role: "staff" },
-  { id: 5, username: "customer02", password: "customerpass", gmail: "customer02@gmail.com", number: "4567890123",createAT: "30-11-2024", updateAt:"30-11-2024", isActive: false, role: "customer" },
+  { id: 1, username: "admin01", password: "adminpass", gmail: "admin01@gmail.com", number: "0123456789", createAT: "30-11-2024", updateAt: "30-11-2024", isActive: true, role: "admin" },
+  { id: 2, username: "staff01", password: "staffpass", gmail: "staff01@gmail.com", number: "0987654321", createAT: "30-11-2024", updateAt: "30-11-2024", isActive: false, role: "staff" },
+  { id: 3, username: "customer01", password: "customerpass", gmail: "customer01@gmail.com", number: "1234567890", createAT: "30-11-2024", updateAt: "30-11-2024", isActive: true, role: "customer" },
+  { id: 4, username: "staff02", password: "staffpass", gmail: "staff02@gmail.com", number: "9876543210", createAT: "30-11-2024", updateAt: "30-11-2024", isActive: true, role: "staff" },
+  { id: 5, username: "customer02", password: "customerpass", gmail: "customer02@gmail.com", number: "4567890123", createAT: "30-11-2024", updateAt: "30-11-2024", isActive: false, role: "customer" },
 ];
 
 const ManageAccount = () => {
   const [accounts, setAccounts] = useState(initialAccounts);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isAddFormVisible, setAddFormVisible] = useState(false);
 
-  // Tìm kiếm tài khoản theo tên người dùng hoặc Gmail
   const filteredAccounts = accounts.filter((account) =>
     account.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
     account.gmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
     account.role.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Hàm toggle trạng thái hoạt động
   const toggleActiveStatus = (id) => {
     setAccounts((prevAccounts) =>
       prevAccounts.map((account) =>
         account.id === id ? { ...account, isActive: !account.isActive } : account
       )
     );
+  };
+
+  const handleAddAccount = (newAccount) => {
+    setAccounts([...accounts, newAccount]);
   };
 
   return (
@@ -46,12 +49,13 @@ const ManageAccount = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="border border-gray-300 p-2 rounded-md w-72"
           />
-          {/* Tooltip và nút Plus */}
           <div className="relative group">
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">
+            <button
+              onClick={() => setAddFormVisible(true)}
+              className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
+            >
               <FontAwesomeIcon icon={faPlus} />
             </button>
-            {/* Tooltip */}
             <span
               className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 text-white text-sm rounded-md px-4 py-2 shadow-lg whitespace-nowrap"
             >
@@ -75,7 +79,7 @@ const ManageAccount = () => {
                 <th className="py-2 px-4 text-center">Edit</th>
               </tr>
             </thead>
-            <tbody >
+            <tbody>
               {filteredAccounts.map((account) => (
                 <tr key={account.id} className="border-b">
                   <td className="py-6 px-4 font-bold">{account.username}</td>
@@ -101,6 +105,14 @@ const ManageAccount = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Add Account Form */}
+        {isAddFormVisible && (
+          <AddAccount
+            onAddAccount={handleAddAccount}
+            onClose={() => setAddFormVisible(false)}
+          />
+        )}
       </div>
     </div>
   );
